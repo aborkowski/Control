@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "touchbit": "github:pimoroni/pxt-touchbit#v0.0.1"
     },
     "files": [
         "main.blocks",
