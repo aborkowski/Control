@@ -20,7 +20,7 @@ function Password () {
     }
 }
 touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
     	
     }
 })
@@ -29,31 +29,50 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("A")
     Password()
 })
+input.onGesture(Gesture.LogoUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+    	
+    }
+})
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
     	
     }
 })
 input.onGesture(Gesture.TiltLeft, function () {
-	
+    if (User_Key == Hand && Lock == 1) {
+    	
+    }
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+    	
+    }
 })
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
     	
     }
 })
 touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
+    	
+    }
+})
+input.onGesture(Gesture.ScreenDown, function () {
+    if (User_Key == Hand && Lock == 1) {
     	
     }
 })
 touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
     	
     }
 })
 input.onButtonPressed(Button.AB, function () {
-	
+    if (User_Key == Key && Lock == 1) {
+    	
+    }
 })
 input.onButtonPressed(Button.B, function () {
     Temp = "" + User_Key + "B"
@@ -61,18 +80,29 @@ input.onButtonPressed(Button.B, function () {
     Password()
 })
 input.onGesture(Gesture.Shake, function () {
-	
+    if ((User_Key == Key || User_Key == Hand) && Lock == 1) {
+    	
+    }
 })
 input.onGesture(Gesture.TiltRight, function () {
-	
+    if (User_Key == Key && Lock == 1) {
+    	
+    }
+})
+input.onGesture(Gesture.LogoDown, function () {
+    if (User_Key == Key && Lock == 1) {
+    	
+    }
 })
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
-    if (true) {
+    if (User_Key == Key && Lock == 1) {
     	
     }
 })
 input.onGesture(Gesture.ThreeG, function () {
-	
+    if (User_Key == Hand && Lock == 1) {
+    	
+    }
 })
 let Temp = ""
 let Lock = 0
