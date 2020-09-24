@@ -16,6 +16,7 @@ function Password () {
             basic.pause(200)
             basic.clearScreen()
             User_Key = ""
+            Temp = ""
         }
     }
 }
@@ -25,9 +26,11 @@ touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
     }
 })
 input.onButtonPressed(Button.A, function () {
-    Temp = "" + User_Key + "A"
-    basic.showString("A")
-    Password()
+    if (Lock == 0) {
+        Temp = "" + User_Key + "A"
+        basic.showString("A")
+        Password()
+    }
 })
 input.onGesture(Gesture.LogoUp, function () {
     if (User_Key == Hand && Lock == 1) {
@@ -75,9 +78,11 @@ input.onButtonPressed(Button.AB, function () {
     }
 })
 input.onButtonPressed(Button.B, function () {
-    Temp = "" + User_Key + "B"
-    basic.showString("B")
-    Password()
+    if (Lock == 0) {
+        Temp = "" + User_Key + "B"
+        basic.showString("B")
+        Password()
+    }
 })
 input.onGesture(Gesture.Shake, function () {
     if ((User_Key == Key || User_Key == Hand) && Lock == 1) {
@@ -114,12 +119,23 @@ Key = "ABBA"
 Hand = "BAAB"
 User_Key = ""
 Lock = 0
+Temp = ""
 basic.forever(function () {
-    if (Lock == 0) {
+    if (Temp == "") {
         led.toggle(0, 4)
+        basic.pause(200)
+        basic.clearScreen()
         led.toggle(1, 4)
+        basic.pause(200)
+        basic.clearScreen()
         led.toggle(2, 4)
+        basic.pause(200)
+        basic.clearScreen()
         led.toggle(3, 4)
         basic.pause(200)
+        basic.clearScreen()
+        led.toggle(4, 4)
+        basic.pause(200)
+        basic.clearScreen()
     }
 })
