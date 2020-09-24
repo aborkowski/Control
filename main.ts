@@ -21,7 +21,7 @@ function Password () {
 }
 touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(2)
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -36,7 +36,7 @@ input.onGesture(Gesture.LogoUp, function () {
 })
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(4)
     }
 })
 input.onGesture(Gesture.TiltLeft, function () {
@@ -51,12 +51,12 @@ input.onGesture(Gesture.ScreenUp, function () {
 })
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(6)
     }
 })
 touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(5)
     }
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -66,12 +66,12 @@ input.onGesture(Gesture.ScreenDown, function () {
 })
 touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(3)
     }
 })
 input.onButtonPressed(Button.AB, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(7)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -81,7 +81,7 @@ input.onButtonPressed(Button.B, function () {
 })
 input.onGesture(Gesture.Shake, function () {
     if ((User_Key == Key || User_Key == Hand) && Lock == 1) {
-    	
+        radio.sendNumber(8)
     }
 })
 input.onGesture(Gesture.TiltRight, function () {
@@ -96,7 +96,7 @@ input.onGesture(Gesture.LogoDown, function () {
 })
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-    	
+        radio.sendNumber(1)
     }
 })
 input.onGesture(Gesture.ThreeG, function () {
