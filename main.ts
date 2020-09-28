@@ -1,3 +1,8 @@
+input.onGesture(Gesture.TiltRight, function () {
+    if (User_Key == Key && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 function Password () {
     User_Key = Temp
     serial.writeLine(User_Key)
@@ -30,6 +35,21 @@ touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
         radio.sendNumber(2)
     }
 })
+input.onGesture(Gesture.TiltLeft, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.LogoUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
         Temp = "" + User_Key + "A"
@@ -39,24 +59,14 @@ input.onButtonPressed(Button.A, function () {
         Password()
     }
 })
-input.onGesture(Gesture.LogoUp, function () {
+input.onGesture(Gesture.Shake, function () {
     if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
+        radio.sendNumber(7)
     }
 })
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(4)
-    }
-})
-input.onGesture(Gesture.TiltLeft, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
-input.onGesture(Gesture.ScreenUp, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
     }
 })
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
@@ -71,6 +81,11 @@ touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
 })
 input.onGesture(Gesture.ScreenDown, function () {
     if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.LogoDown, function () {
+    if (User_Key == Key && Lock == 1) {
         radio.sendNumber(0)
     }
 })
@@ -93,21 +108,6 @@ input.onButtonPressed(Button.B, function () {
         Password()
     }
 })
-input.onGesture(Gesture.Shake, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(7)
-    }
-})
-input.onGesture(Gesture.TiltRight, function () {
-    if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
-input.onGesture(Gesture.LogoDown, function () {
-    if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(1)
@@ -121,25 +121,47 @@ input.onGesture(Gesture.ThreeG, function () {
 function Waiting () {
     if (Temp == "") {
         led.toggle(0, 4)
-        basic.pause(500)
-        basic.clearScreen()
         if (Temp == "") {
-            led.toggle(1, 4)
             basic.pause(500)
-            basic.clearScreen()
             if (Temp == "") {
-                led.toggle(2, 4)
-                basic.pause(500)
                 basic.clearScreen()
                 if (Temp == "") {
-                    led.toggle(3, 4)
-                    basic.pause(500)
-                    basic.clearScreen()
+                    led.toggle(1, 4)
                     if (Temp == "") {
-                        led.toggle(4, 4)
                         basic.pause(500)
-                        basic.clearScreen()
-                        Waiting()
+                        if (Temp == "") {
+                            basic.clearScreen()
+                            if (Temp == "") {
+                                led.toggle(2, 4)
+                                if (Temp == "") {
+                                    basic.pause(500)
+                                    if (Temp == "") {
+                                        basic.clearScreen()
+                                        if (Temp == "") {
+                                            led.toggle(3, 4)
+                                            if (Temp == "") {
+                                                basic.pause(500)
+                                                if (Temp == "") {
+                                                    basic.clearScreen()
+                                                    if (Temp == "") {
+                                                        led.toggle(4, 4)
+                                                        if (Temp == "") {
+                                                            basic.pause(500)
+                                                            if (Temp == "") {
+                                                                basic.clearScreen()
+                                                                if (Temp == "") {
+                                                                    Waiting()
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
