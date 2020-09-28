@@ -5,7 +5,7 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 function Password () {
     User_Key = Temp
-    serial.writeLine("" + (User_Key))
+    serial.writeLine(User_Key)
     if (User_Key == Key || User_Key == Hand) {
         if (Lock == 0) {
             basic.showIcon(IconNames.Yes)
