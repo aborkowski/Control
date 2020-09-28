@@ -5,12 +5,13 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 function Password () {
     User_Key = Temp
-    serial.writeLine(User_Key)
+    serial.writeLine("" + (User_Key))
     if (User_Key == Key || User_Key == Hand) {
         if (Lock == 0) {
             basic.showIcon(IconNames.Yes)
             basic.pause(200)
             basic.clearScreen()
+            music.startMelody(music.builtInMelody(Melodies.PowerUp), MelodyOptions.Once)
             radio.sendNumber(8)
         }
         basic.pause(100)
@@ -20,6 +21,7 @@ function Password () {
             basic.showIcon(IconNames.No)
             basic.pause(200)
             basic.clearScreen()
+            music.startMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once)
             User_Key = ""
             Temp = ""
             Count = Count + 1
@@ -45,6 +47,23 @@ input.onGesture(Gesture.ScreenUp, function () {
         radio.sendNumber(0)
     }
 })
+function Button_B () {
+    Temp = "" + User_Key + "B"
+    basic.showString("B")
+    basic.pause(100)
+    basic.clearScreen()
+    Password()
+}
+function Start () {
+    radio.setGroup(1)
+    Key = "ABBA"
+    Hand = "BAAB"
+    Try = 5
+    User_Key = ""
+    Lock = 0
+    Temp = ""
+    Waiting()
+}
 input.onGesture(Gesture.LogoUp, function () {
     if (User_Key == Hand && Lock == 1) {
         radio.sendNumber(0)
@@ -52,11 +71,7 @@ input.onGesture(Gesture.LogoUp, function () {
 })
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
-        Temp = "" + User_Key + "A"
-        basic.showString("A")
-        basic.pause(100)
-        basic.clearScreen()
-        Password()
+        Button_A()
     }
 })
 input.onGesture(Gesture.Shake, function () {
@@ -69,6 +84,13 @@ touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
         radio.sendNumber(4)
     }
 })
+function Button_A () {
+    Temp = "" + User_Key + "A"
+    basic.showString("A")
+    basic.pause(100)
+    basic.clearScreen()
+    Password()
+}
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(6)
@@ -101,11 +123,7 @@ input.onButtonPressed(Button.AB, function () {
 })
 input.onButtonPressed(Button.B, function () {
     if (Lock == 0) {
-        Temp = "" + User_Key + "B"
-        basic.showString("B")
-        basic.pause(100)
-        basic.clearScreen()
-        Password()
+        Button_B()
     }
 })
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
@@ -168,18 +186,11 @@ function Waiting () {
         }
     }
 }
+let Try = 0
 let Count = 0
+let Hand = ""
 let Temp = ""
 let Lock = 0
-let User_Key = ""
-let Try = 0
-let Hand = ""
 let Key = ""
-radio.setGroup(1)
-Key = "ABBA"
-Hand = "BAAB"
-Try = 5
-User_Key = ""
-Lock = 0
-Temp = ""
-Waiting()
+let User_Key = ""
+Start()
