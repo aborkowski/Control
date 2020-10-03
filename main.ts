@@ -11,17 +11,16 @@ function Password () {
             basic.showIcon(IconNames.Yes)
             basic.pause(200)
             basic.clearScreen()
-            music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once)
             radio.sendNumber(8)
         }
         basic.pause(100)
         Lock = 1
+        mode = 4
     } else if (User_Key.length > Key.length || User_Key.length > Hand.length) {
         if (Lock == 0) {
             basic.showIcon(IconNames.No)
             basic.pause(200)
             basic.clearScreen()
-            music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once)
             User_Key = ""
             Temp = ""
             Count = Count + 1
@@ -94,11 +93,13 @@ function Button_A () {
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(6)
+        mode = mode + 1
     }
 })
 touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(5)
+        mode = mode - 1
     }
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -188,9 +189,15 @@ function Waiting () {
 }
 let Try = 0
 let Count = 0
+let mode = 0
 let Hand = ""
 let Temp = ""
 let Lock = 0
 let Key = ""
 let User_Key = ""
 Start()
+basic.forever(function () {
+    while (Lock == 1) {
+        basic.showNumber(mode)
+    }
+})
