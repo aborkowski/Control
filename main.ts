@@ -11,11 +11,11 @@ function Password () {
             basic.showIcon(IconNames.Yes)
             basic.pause(200)
             basic.clearScreen()
+            mode = 4
             radio.sendNumber(8)
         }
         basic.pause(100)
         Lock = 1
-        mode = 4
     } else if (User_Key.length > Key.length || User_Key.length > Hand.length) {
         if (Lock == 0) {
             basic.showIcon(IconNames.No)
@@ -199,5 +199,10 @@ Start()
 basic.forever(function () {
     while (Lock == 1) {
         basic.showNumber(mode)
+        if (mode < 1) {
+            mode = 4
+        } else if (mode > 4) {
+            mode = 1
+        }
     }
 })
