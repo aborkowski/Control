@@ -128,6 +128,7 @@ input.onButtonPressed(Button.AB, function () {
         radio.sendNumber(7)
     }
     if (mode == 4) {
+        control.waitMicros(1000)
         control.reset()
     }
 })
