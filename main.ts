@@ -34,6 +34,9 @@ function Password () {
 touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(2)
+        if (mode == 4) {
+            mode = 2
+        }
     }
 })
 input.onGesture(Gesture.TiltLeft, function () {
@@ -115,6 +118,9 @@ input.onGesture(Gesture.LogoDown, function () {
 touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(3)
+        if (mode == 4) {
+            mode = 3
+        }
     }
 })
 input.onButtonPressed(Button.AB, function () {
@@ -130,6 +136,9 @@ input.onButtonPressed(Button.B, function () {
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(1)
+        if (mode == 4) {
+            mode = 1
+        }
     }
 })
 input.onGesture(Gesture.ThreeG, function () {
