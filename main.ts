@@ -127,6 +127,9 @@ input.onButtonPressed(Button.AB, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(7)
     }
+    if (mode == 4) {
+        control.reset()
+    }
 })
 input.onButtonPressed(Button.B, function () {
     if (Lock == 0) {
