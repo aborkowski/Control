@@ -126,10 +126,10 @@ touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
 input.onButtonPressed(Button.AB, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(7)
-    }
-    if (mode == 4) {
-        control.waitMicros(1000)
-        control.reset()
+        if (mode == 4) {
+            control.waitMicros(1000)
+            Start()
+        }
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -209,6 +209,7 @@ let Lock = 0
 let Key = ""
 let User_Key = ""
 Start()
+led.setBrightness(255)
 basic.forever(function () {
     while (Lock == 1) {
         basic.showNumber(mode)
