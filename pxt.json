@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "touchbit": "github:pimoroni/pxt-touchbit#v0.0.1"
+        "touchbit": "github:pimoroni/pxt-touchbit#v0.0.1",
+        "microturtle": "github:microsoft/pxt-microturtle#v0.0.9"
     },
     "files": [
         "main.blocks",
