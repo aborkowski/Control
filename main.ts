@@ -66,6 +66,7 @@ function Button_B () {
 }
 function Start () {
     radio.setGroup(1)
+    Screen = 1
     Key = "ABBA"
     Hand = "BAAB"
     Try = 5
