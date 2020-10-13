@@ -1,8 +1,3 @@
-input.onGesture(Gesture.TiltRight, function () {
-    if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 function Password () {
     User_Key = Temp
     serial.writeLine("" + (User_Key))
@@ -43,18 +38,8 @@ touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
         } else if (mode == 4) {
             Mode_4 = 2
         }
-        control.waitMicros(4)
+        control.waitMicros(100)
         modes()
-    }
-})
-input.onGesture(Gesture.TiltLeft, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
-input.onGesture(Gesture.ScreenUp, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
     }
 })
 function Button_B () {
@@ -75,19 +60,14 @@ function Start () {
     Temp = ""
     Waiting()
 }
-input.onGesture(Gesture.LogoUp, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
         Button_A()
     }
 })
-input.onGesture(Gesture.Shake, function () {
+input.onGesture(Gesture.LogoUp, function () {
     if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(7)
+        radio.sendNumber(0)
     }
 })
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
@@ -102,7 +82,7 @@ touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
         } else if (mode == 4) {
             Mode_4 = 4
         }
-        control.waitMicros(4)
+        control.waitMicros(100)
         modes()
     }
 })
@@ -113,6 +93,16 @@ function Button_A () {
     basic.clearScreen()
     Password()
 }
+input.onGesture(Gesture.TiltLeft, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(6)
@@ -130,11 +120,6 @@ input.onGesture(Gesture.ScreenDown, function () {
         radio.sendNumber(0)
     }
 })
-input.onGesture(Gesture.LogoDown, function () {
-    if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(3)
@@ -147,7 +132,7 @@ touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
         } else if (mode == 4) {
             Mode_4 = 3
         }
-        control.waitMicros(4)
+        control.waitMicros(100)
         modes()
     }
 })
@@ -161,10 +146,10 @@ input.onButtonPressed(Button.AB, function () {
     }
 })
 function modes () {
+    basic.clearScreen()
     if (mode == 1) {
         Screen = 0
-        control.waitMicros(4)
-        basic.clearScreen()
+        control.waitMicros(100)
         if (Mode_1 == 1) {
             for (let index = 0; index < 2; index++) {
                 turtle.setPosition(2, 4)
@@ -198,11 +183,11 @@ function modes () {
                 basic.clearScreen()
             }
         }
-        control.waitMicros(4)
+        control.waitMicros(100)
         Screen = 1
     } else if (mode == 2) {
         Screen = 0
-        control.waitMicros(4)
+        control.waitMicros(100)
         if (Mode_2 == 1) {
         	
         } else if (Mode_2 == 2) {
@@ -216,7 +201,11 @@ function modes () {
         } else if (Mode_2 == 4) {
         	
         }
+        control.waitMicros(100)
+        Screen = 1
     } else if (mode == 3) {
+        Screen = 0
+        control.waitMicros(100)
         if (Mode_3 == 1) {
         	
         } else if (Mode_3 == 2) {
@@ -226,9 +215,9 @@ function modes () {
         } else if (Mode_3 == 4) {
         	
         }
+        control.waitMicros(100)
+        Screen = 1
     } else if (mode == 4) {
-        Screen = 0
-        control.waitMicros(4)
         if (Mode_4 == 1) {
             mode = 1
         } else if (Mode_4 == 2) {
@@ -245,6 +234,21 @@ input.onButtonPressed(Button.B, function () {
         Button_B()
     }
 })
+input.onGesture(Gesture.Shake, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(7)
+    }
+})
+input.onGesture(Gesture.TiltRight, function () {
+    if (User_Key == Key && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.LogoDown, function () {
+    if (User_Key == Key && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(1)
@@ -257,7 +261,7 @@ touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
         } else if (mode == 4) {
             Mode_4 = 1
         }
-        control.waitMicros(4)
+        control.waitMicros(100)
         modes()
     }
 })
@@ -324,10 +328,10 @@ let Mode_1 = 0
 let Try = 0
 let Count = 0
 let mode = 0
-let Hand = ""
-let Temp = ""
 let Lock = 0
+let Hand = ""
 let Key = ""
+let Temp = ""
 let User_Key = ""
 Start()
 led.setBrightness(255)
