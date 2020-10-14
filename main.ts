@@ -66,6 +66,11 @@ function Start () {
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
         Button_A()
+    } else if (Lock == 1) {
+        Mode_1 = 1
+        mode = 1
+        control.waitMicros(100)
+        modes()
     }
 })
 input.onGesture(Gesture.LogoUp, function () {
