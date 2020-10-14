@@ -11,7 +11,7 @@ function Password () {
         }
         basic.pause(100)
         Lock = 1
-    } else if (User_Key.length > Key.length || User_Key.length > Hand.length) {
+    } else if ((User_Key != Key || User_Key != Hand) && Unlock == 4) {
         if (Lock == 0) {
             basic.showIcon(IconNames.No)
             basic.pause(200)
@@ -19,8 +19,9 @@ function Password () {
             User_Key = ""
             Temp = ""
             Count = Count + 1
+            Waiting()
             if (Count > Try) {
-                control.waitMicros(25000)
+                control.waitMicros(250000)
                 control.reset()
             }
         }
@@ -44,6 +45,7 @@ touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
 })
 function Button_B () {
     Temp = "" + User_Key + "B"
+    Unlock = Unlock + 1
     basic.showString("B")
     basic.pause(100)
     basic.clearScreen()
@@ -51,6 +53,7 @@ function Button_B () {
 }
 function Start () {
     radio.setGroup(1)
+    Unlock = 0
     Screen = 1
     Key = "ABBA"
     Hand = "BAAB"
@@ -88,6 +91,7 @@ touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
 })
 function Button_A () {
     Temp = "" + User_Key + "A"
+    Unlock = Unlock + 1
     basic.showString("A")
     basic.pause(100)
     basic.clearScreen()
@@ -329,6 +333,7 @@ let Try = 0
 let Count = 0
 let mode = 0
 let Lock = 0
+let Unlock = 0
 let Hand = ""
 let Key = ""
 let Temp = ""
