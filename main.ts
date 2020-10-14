@@ -8,6 +8,7 @@ function Password () {
             basic.clearScreen()
             mode = 4
             radio.sendNumber(8)
+            show_mode()
         }
         basic.pause(100)
         Lock = 1
@@ -23,6 +24,21 @@ function Password () {
             if (Count > Try) {
                 control.waitMicros(250000)
                 control.reset()
+            }
+        }
+    }
+}
+function show_mode () {
+    if (Screen == 1) {
+        basic.showNumber(mode)
+        if (Screen == 1) {
+            if (mode < 1) {
+                mode = 4
+            } else if (mode > 4) {
+                mode = 1
+            }
+            if (Screen == 1) {
+                show_mode()
             }
         }
     }
@@ -64,14 +80,7 @@ function Start () {
     Waiting()
 }
 input.onButtonPressed(Button.A, function () {
-    if (Lock == 0) {
-        Button_A()
-    } else if (Lock == 1) {
-        Mode_1 = 1
-        mode = 1
-        control.waitMicros(100)
-        modes()
-    }
+    Screen = 0
 })
 input.onGesture(Gesture.LogoUp, function () {
     if (User_Key == Hand && Lock == 1) {
@@ -249,7 +258,7 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 input.onGesture(Gesture.TiltRight, function () {
-    if (User_Key == Key && Lock == 1) {
+    if (User_Key == Hand && Lock == 1) {
         radio.sendNumber(0)
     }
 })
@@ -329,11 +338,11 @@ function Waiting () {
         }
     }
 }
-let Screen = 0
 let Mode_4 = 0
 let Mode_3 = 0
 let Mode_2 = 0
 let Mode_1 = 0
+let Screen = 0
 let Try = 0
 let Count = 0
 let mode = 0
@@ -343,17 +352,6 @@ let Hand = ""
 let Key = ""
 let Temp = ""
 let User_Key = ""
+basic.clearScreen()
 Start()
 led.setBrightness(255)
-basic.forever(function () {
-    while (Lock == 1) {
-        while (Screen == 1) {
-            basic.showNumber(mode)
-            if (mode < 1) {
-                mode = 4
-            } else if (mode > 4) {
-                mode = 1
-            }
-        }
-    }
-})
