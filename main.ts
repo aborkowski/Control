@@ -80,7 +80,9 @@ function Start () {
     Waiting()
 }
 input.onButtonPressed(Button.A, function () {
-    Screen = 0
+    if (Lock == 0) {
+        Button_A()
+    }
 })
 input.onGesture(Gesture.LogoUp, function () {
     if (User_Key == Hand && Lock == 1) {
