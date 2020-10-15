@@ -8,7 +8,7 @@ function Password () {
             basic.clearScreen()
             mode = 4
             radio.sendNumber(8)
-            show_mode()
+            basic.showNumber(mode)
         }
         basic.pause(100)
         Lock = 1
@@ -30,17 +30,7 @@ function Password () {
 }
 function show_mode () {
     if (Screen == 1) {
-        basic.showNumber(mode)
-        if (Screen == 1) {
-            if (mode < 1) {
-                mode = 4
-            } else if (mode > 4) {
-                mode = 1
-            }
-            if (Screen == 1) {
-                show_mode()
-            }
-        }
+    	
     }
 }
 touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
@@ -127,12 +117,24 @@ touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(6)
         mode = mode + 1
+        if (mode < 1) {
+            mode = 4
+        } else if (mode > 4) {
+            mode = 1
+        }
+        basic.showNumber(mode)
     }
 })
 touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(5)
         mode = mode - 1
+        if (mode < 1) {
+            mode = 4
+        } else if (mode > 4) {
+            mode = 1
+        }
+        basic.showNumber(mode)
     }
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -167,9 +169,8 @@ input.onButtonPressed(Button.AB, function () {
 })
 function modes () {
     basic.clearScreen()
+    control.waitMicros(100)
     if (mode == 1) {
-        Screen = 0
-        control.waitMicros(100)
         if (Mode_1 == 1) {
             for (let index = 0; index < 2; index++) {
                 turtle.setPosition(2, 4)
@@ -182,7 +183,7 @@ function modes () {
         } else if (Mode_1 == 2) {
             for (let index = 0; index < 2; index++) {
                 turtle.setPosition(2, 4)
-                turtle.forward(3)
+                turtle.forward(4)
                 basic.clearScreen()
             }
         } else if (Mode_1 == 3) {
@@ -203,17 +204,13 @@ function modes () {
                 basic.clearScreen()
             }
         }
-        control.waitMicros(100)
-        Screen = 1
     } else if (mode == 2) {
-        Screen = 0
-        control.waitMicros(100)
         if (Mode_2 == 1) {
         	
         } else if (Mode_2 == 2) {
             for (let index = 0; index < 2; index++) {
                 turtle.setPosition(2, 4)
-                turtle.back(3)
+                turtle.back(4)
                 basic.clearScreen()
             }
         } else if (Mode_2 == 3) {
@@ -221,11 +218,7 @@ function modes () {
         } else if (Mode_2 == 4) {
         	
         }
-        control.waitMicros(100)
-        Screen = 1
     } else if (mode == 3) {
-        Screen = 0
-        control.waitMicros(100)
         if (Mode_3 == 1) {
         	
         } else if (Mode_3 == 2) {
@@ -235,8 +228,6 @@ function modes () {
         } else if (Mode_3 == 4) {
         	
         }
-        control.waitMicros(100)
-        Screen = 1
     } else if (mode == 4) {
         if (Mode_4 == 1) {
             mode = 1
@@ -248,6 +239,8 @@ function modes () {
             mode = 4
         }
     }
+    control.waitMicros(100)
+    basic.showNumber(mode)
 }
 input.onButtonPressed(Button.B, function () {
     if (Lock == 0) {
