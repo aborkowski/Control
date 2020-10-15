@@ -91,6 +91,25 @@ input.onGesture(Gesture.LogoUp, function () {
         radio.sendNumber(0)
     }
 })
+function Button_AB () {
+    radio.sendNumber(7)
+    if (mode == 1) {
+        basic.clearScreen()
+        Speed = Speed + 10
+        basic.showNumber(Speed)
+    } else if (mode == 2) {
+        basic.clearScreen()
+        Speed = Speed - 10
+        basic.showNumber(Speed)
+    } else if (mode == 3) {
+        basic.clearScreen()
+        Speed = Speed + 10
+        basic.showNumber(Speed)
+    } else if (mode == 4) {
+        control.waitMicros(1000)
+        Start()
+    }
+}
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         Button_d()
@@ -150,11 +169,7 @@ touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(7)
-        if (mode == 4) {
-            control.waitMicros(1000)
-            Start()
-        }
+        Button_AB()
     }
 })
 function modes () {
@@ -340,6 +355,7 @@ function Waiting () {
         }
     }
 }
+let Speed = 0
 let Screen = 0
 let Try = 0
 let Count = 0
@@ -356,4 +372,5 @@ let Mode_1 = 0
 let mode = 0
 basic.clearScreen()
 Start()
+led.setDisplayMode(DisplayMode.BlackAndWhite)
 led.setBrightness(255)
