@@ -128,6 +128,16 @@ input.onGesture(Gesture.TiltLeft, function () {
         radio.sendNumber(0)
     }
 })
+function Button_right () {
+    radio.sendNumber(6)
+    mode = mode + 1
+    if (mode < 1) {
+        mode = 4
+    } else if (mode > 4) {
+        mode = 1
+    }
+    basic.showNumber(mode)
+}
 input.onGesture(Gesture.ScreenUp, function () {
     if (User_Key == Hand && Lock == 1) {
         radio.sendNumber(0)
@@ -135,26 +145,12 @@ input.onGesture(Gesture.ScreenUp, function () {
 })
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(6)
-        mode = mode + 1
-        if (mode < 1) {
-            mode = 4
-        } else if (mode > 4) {
-            mode = 1
-        }
-        basic.showNumber(mode)
+        Button_right()
     }
 })
 touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(5)
-        mode = mode - 1
-        if (mode < 1) {
-            mode = 4
-        } else if (mode > 4) {
-            mode = 1
-        }
-        basic.showNumber(mode)
+        Button_left()
     }
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -211,7 +207,14 @@ function modes () {
         }
     } else if (mode == 2) {
         if (Mode_2 == 1) {
-        	
+            for (let index = 0; index < 2; index++) {
+                turtle.setPosition(2, 4)
+                turtle.back(2)
+                turtle.turnRight()
+                turtle.back(2)
+                turtle.turnLeft()
+                basic.clearScreen()
+            }
         } else if (Mode_2 == 2) {
             for (let index = 0; index < 2; index++) {
                 turtle.setPosition(2, 4)
@@ -219,9 +222,22 @@ function modes () {
                 basic.clearScreen()
             }
         } else if (Mode_2 == 3) {
-        	
+            basic.showLeds(`
+                . . . . .
+                . . . . .
+                # # # # #
+                . . . . .
+                . . . . .
+                `)
         } else if (Mode_2 == 4) {
-        	
+            for (let index = 0; index < 2; index++) {
+                turtle.setPosition(2, 4)
+                turtle.back(2)
+                turtle.turnLeft()
+                turtle.back(2)
+                turtle.turnRight()
+                basic.clearScreen()
+            }
         }
     } else if (mode == 3) {
         if (Mode_3 == 1) {
@@ -229,7 +245,13 @@ function modes () {
         } else if (Mode_3 == 2) {
         	
         } else if (Mode_3 == 3) {
-        	
+            basic.showLeds(`
+                . . . . .
+                . . . . .
+                # # # # #
+                . . . . .
+                . . . . .
+                `)
         } else if (Mode_3 == 4) {
         	
         }
@@ -257,6 +279,16 @@ input.onGesture(Gesture.Shake, function () {
         radio.sendNumber(7)
     }
 })
+function Button_left () {
+    radio.sendNumber(5)
+    mode = mode - 1
+    if (mode < 1) {
+        mode = 4
+    } else if (mode > 4) {
+        mode = 1
+    }
+    basic.showNumber(mode)
+}
 input.onGesture(Gesture.TiltRight, function () {
     if (User_Key == Hand && Lock == 1) {
         radio.sendNumber(0)
@@ -372,5 +404,4 @@ let Mode_1 = 0
 let mode = 0
 basic.clearScreen()
 Start()
-led.setDisplayMode(DisplayMode.BlackAndWhite)
 led.setBrightness(255)
