@@ -8,10 +8,19 @@ function Button_a () {
         Mode_3 = 1
     } else if (mode == 4) {
         Mode_4 = 1
+    } else if (mode == 5) {
+        Mode_5 = 1
+    } else if (mode == 6) {
+        Mode_6 = 1
     }
     control.waitMicros(100)
     modes()
 }
+input.onGesture(Gesture.TiltRight, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 function Password () {
     User_Key = Temp
     serial.writeLine("" + (User_Key))
@@ -47,6 +56,11 @@ touchbit.on(touchbit.TouchPad.b, touchbit.TouchEvent.pressed, function () {
         Button_b()
     }
 })
+input.onGesture(Gesture.TiltLeft, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 function Button_c () {
     radio.sendNumber(3)
     if (mode == 1) {
@@ -57,10 +71,19 @@ function Button_c () {
         Mode_3 = 3
     } else if (mode == 4) {
         Mode_4 = 3
+    } else if (mode == 5) {
+        Mode_5 = 3
+    } else if (mode == 6) {
+        Mode_6 = 3
     }
     control.waitMicros(100)
     modes()
 }
+input.onGesture(Gesture.ScreenUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 function Button_B () {
     Temp = "" + User_Key + "B"
     Unlock = Unlock + 1
@@ -73,6 +96,7 @@ function Start () {
     radio.setGroup(1)
     Unlock = 0
     Screen = 1
+    Speed = 30
     Key = "ABBA"
     Hand = "BAAB"
     Try = 5
@@ -81,14 +105,19 @@ function Start () {
     Temp = ""
     Waiting()
 }
+input.onGesture(Gesture.LogoUp, function () {
+    if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
         Button_A()
     }
 })
-input.onGesture(Gesture.LogoUp, function () {
+input.onGesture(Gesture.Shake, function () {
     if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
+        radio.sendNumber(7)
     }
 })
 function Button_AB () {
@@ -108,6 +137,14 @@ function Button_AB () {
     } else if (mode == 4) {
         control.waitMicros(1000)
         Start()
+    } else if (Speed > 100) {
+        Speed = 30
+    } else if (Speed < 30) {
+        Speed = 100
+    } else if (mode == 5) {
+    	
+    } else if (mode == 6) {
+    	
     }
 }
 touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
@@ -123,11 +160,6 @@ function Button_A () {
     basic.clearScreen()
     Password()
 }
-input.onGesture(Gesture.TiltLeft, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 function Button_right () {
     radio.sendNumber(6)
     mode = mode + 1
@@ -138,11 +170,6 @@ function Button_right () {
     }
     basic.showNumber(mode)
 }
-input.onGesture(Gesture.ScreenUp, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         Button_right()
@@ -155,6 +182,11 @@ touchbit.on(touchbit.TouchPad.left, touchbit.TouchEvent.pressed, function () {
 })
 input.onGesture(Gesture.ScreenDown, function () {
     if (User_Key == Hand && Lock == 1) {
+        radio.sendNumber(0)
+    }
+})
+input.onGesture(Gesture.LogoDown, function () {
+    if (User_Key == Key && Lock == 1) {
         radio.sendNumber(0)
     }
 })
@@ -274,11 +306,6 @@ input.onButtonPressed(Button.B, function () {
         Button_B()
     }
 })
-input.onGesture(Gesture.Shake, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(7)
-    }
-})
 function Button_left () {
     radio.sendNumber(5)
     mode = mode - 1
@@ -289,16 +316,6 @@ function Button_left () {
     }
     basic.showNumber(mode)
 }
-input.onGesture(Gesture.TiltRight, function () {
-    if (User_Key == Hand && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
-input.onGesture(Gesture.LogoDown, function () {
-    if (User_Key == Key && Lock == 1) {
-        radio.sendNumber(0)
-    }
-})
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         Button_a()
@@ -319,6 +336,10 @@ function Button_b () {
         Mode_3 = 2
     } else if (mode == 4) {
         Mode_4 = 2
+    } else if (mode == 5) {
+        Mode_5 = 2
+    } else if (mode == 6) {
+        Mode_6 = 2
     }
     control.waitMicros(100)
     modes()
@@ -333,6 +354,10 @@ function Button_d () {
         Mode_3 = 4
     } else if (mode == 4) {
         Mode_4 = 4
+    } else if (mode == 5) {
+        Mode_5 = 4
+    } else if (mode == 6) {
+        Mode_6 = 4
     }
     control.waitMicros(100)
     modes()
@@ -391,12 +416,14 @@ let Speed = 0
 let Screen = 0
 let Try = 0
 let Count = 0
-let Lock = 0
 let Unlock = 0
-let Hand = ""
 let Key = ""
 let Temp = ""
+let Lock = 0
+let Hand = ""
 let User_Key = ""
+let Mode_6 = 0
+let Mode_5 = 0
 let Mode_4 = 0
 let Mode_3 = 0
 let Mode_2 = 0
