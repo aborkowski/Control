@@ -179,7 +179,7 @@ function modes () {
     } else if (mode == 2) {
         if (Mode_2 == 1) {
             for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
+                turtle.setPosition(2, 0)
                 turtle.back(2)
                 turtle.turnRight()
                 turtle.back(2)
@@ -188,7 +188,7 @@ function modes () {
             }
         } else if (Mode_2 == 2) {
             for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
+                turtle.setPosition(2, 0)
                 turtle.back(4)
                 basic.clearScreen()
             }
@@ -202,7 +202,7 @@ function modes () {
                 `)
         } else if (Mode_2 == 4) {
             for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
+                turtle.setPosition(2, 0)
                 turtle.back(2)
                 turtle.turnLeft()
                 turtle.back(2)
