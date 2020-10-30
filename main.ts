@@ -135,6 +135,35 @@ touchbit.on(touchbit.TouchPad.c, touchbit.TouchEvent.pressed, function () {
         modes()
     }
 })
+input.onButtonPressed(Button.AB, function () {
+    if (Lock == 1 && Key == User_Key) {
+        radio.sendNumber(7)
+        if (mode == 1) {
+            basic.clearScreen()
+            Speed = Speed + 10
+            basic.showNumber(Speed)
+        } else if (mode == 2) {
+            basic.clearScreen()
+            Speed = Speed - 10
+            basic.showNumber(Speed)
+        } else if (mode == 3) {
+            basic.clearScreen()
+            Speed = Speed + 10
+            basic.showNumber(Speed)
+        } else if (mode == 4) {
+            control.waitMicros(100)
+            Start()
+        } else if (Speed > 100) {
+            Speed = 30
+        } else if (Speed < 30) {
+            Speed = 100
+        } else if (mode == 5) {
+        	
+        } else if (mode == 6) {
+        	
+        }
+    }
+})
 function modes () {
     basic.clearScreen()
     control.waitMicros(100)
@@ -467,34 +496,6 @@ basic.forever(function () {
             }
             control.waitMicros(100)
             modes()
-        }
-    } else if (Lock == 1 && Key == User_Key) {
-        if (input.buttonIsPressed(Button.AB)) {
-            radio.sendNumber(7)
-            if (mode == 1) {
-                basic.clearScreen()
-                Speed = Speed + 10
-                basic.showNumber(Speed)
-            } else if (mode == 2) {
-                basic.clearScreen()
-                Speed = Speed - 10
-                basic.showNumber(Speed)
-            } else if (mode == 3) {
-                basic.clearScreen()
-                Speed = Speed + 10
-                basic.showNumber(Speed)
-            } else if (mode == 4) {
-                control.waitMicros(100)
-                Start()
-            } else if (Speed > 100) {
-                Speed = 30
-            } else if (Speed < 30) {
-                Speed = 100
-            } else if (mode == 5) {
-            	
-            } else if (mode == 6) {
-            	
-            }
         }
     }
 })
