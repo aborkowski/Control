@@ -91,6 +91,52 @@ touchbit.on(touchbit.TouchPad.d, touchbit.TouchEvent.pressed, function () {
         modes()
     }
 })
+function Waiting2 () {
+    if (Temp == "") {
+        led.toggle(0, 4)
+        if (Temp == "") {
+            basic.pause(500)
+            if (Temp == "") {
+                if (Temp == "") {
+                    led.toggle(1, 4)
+                    if (Temp == "") {
+                        basic.pause(500)
+                        if (Temp == "") {
+                            if (Temp == "") {
+                                led.toggle(2, 4)
+                                if (Temp == "") {
+                                    basic.pause(500)
+                                    if (Temp == "") {
+                                        if (Temp == "") {
+                                            led.toggle(3, 4)
+                                            if (Temp == "") {
+                                                basic.pause(500)
+                                                if (Temp == "") {
+                                                    if (Temp == "") {
+                                                        led.toggle(4, 4)
+                                                        if (Temp == "") {
+                                                            basic.pause(500)
+                                                            if (Temp == "") {
+                                                                basic.clearScreen()
+                                                                if (Temp == "") {
+                                                                    Waiting()
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 touchbit.on(touchbit.TouchPad.right, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(6)
@@ -380,6 +426,7 @@ let Key = ""
 let Temp = ""
 let User_Key = ""
 basic.clearScreen()
+Waiting2()
 Start()
 led.setBrightness(255)
 basic.forever(function () {
