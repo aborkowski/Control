@@ -112,14 +112,15 @@ function Waiting2 () {
                                             if (Temp == "") {
                                                 basic.pause(500)
                                                 if (Temp == "") {
+                                                    led.toggle(4, 4)
                                                     if (Temp == "") {
-                                                        led.toggle(4, 4)
+                                                        basic.pause(500)
                                                         if (Temp == "") {
-                                                            basic.pause(500)
+                                                            basic.clearScreen()
                                                             if (Temp == "") {
-                                                                basic.clearScreen()
+                                                                basic.pause(500)
                                                                 if (Temp == "") {
-                                                                    Waiting()
+                                                                    Waiting2()
                                                                 }
                                                             }
                                                         }
@@ -199,10 +200,6 @@ input.onButtonPressed(Button.AB, function () {
         } else if (mode == 4) {
             control.waitMicros(100)
             Start()
-        } else if (Speed > 100) {
-            Speed = 30
-        } else if (Speed < 30) {
-            Speed = 100
         } else if (mode == 5) {
         	
         } else if (mode == 6) {
@@ -448,10 +445,6 @@ basic.forever(function () {
             } else if (mode == 4) {
                 control.waitMicros(100)
                 Start()
-            } else if (Speed > 100) {
-                Speed = 30
-            } else if (Speed < 30) {
-                Speed = 100
             } else if (mode == 5) {
             	
             } else if (mode == 6) {
@@ -544,5 +537,12 @@ basic.forever(function () {
             control.waitMicros(100)
             modes()
         }
+    }
+})
+basic.forever(function () {
+    if (Speed > 100) {
+        Speed = 30
+    } else if (Speed < 30) {
+        Speed = 100
     }
 })
