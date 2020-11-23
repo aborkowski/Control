@@ -1,6 +1,4 @@
 function Password () {
-    User_Key = Temp
-    serial.writeLine("" + (User_Key))
     if (User_Key == Key || User_Key == Hand) {
         if (Lock == 0) {
             basic.showIcon(IconNames.Yes)
@@ -60,11 +58,14 @@ function Start () {
     User_Key = ""
     Lock = 0
     Temp = ""
+    Waiting2()
 }
 input.onButtonPressed(Button.A, function () {
     if (Lock == 0) {
         Temp = "" + User_Key + "A"
         Unlock = Unlock + 1
+        User_Key = Temp
+        serial.writeLine(User_Key)
         basic.showString("A")
         basic.pause(100)
         basic.clearScreen()
@@ -205,6 +206,7 @@ input.onButtonPressed(Button.AB, function () {
         } else if (mode == 6) {
         	
         }
+        Speed_Control()
     }
 })
 function modes () {
@@ -328,12 +330,23 @@ input.onButtonPressed(Button.B, function () {
     if (Lock == 0) {
         Temp = "" + User_Key + "B"
         Unlock = Unlock + 1
+        User_Key = Temp
+        serial.writeLine(User_Key)
         basic.showString("B")
         basic.pause(100)
         basic.clearScreen()
         Password()
     }
 })
+function Speed_Control () {
+    if (Speed > 100) {
+        Speed = 30
+        basic.showNumber(Speed)
+    } else if (Speed < 30) {
+        Speed = 100
+        basic.showNumber(Speed)
+    }
+}
 touchbit.on(touchbit.TouchPad.a, touchbit.TouchEvent.pressed, function () {
     if (User_Key == Key && Lock == 1) {
         radio.sendNumber(1)
@@ -404,6 +417,7 @@ function Waiting () {
         }
     }
 }
+let Temp = ""
 let Speed = 0
 let Screen = 0
 let Mode_6 = 0
@@ -420,10 +434,8 @@ let Lock = 0
 let Unlock = 0
 let Hand = ""
 let Key = ""
-let Temp = ""
 let User_Key = ""
 basic.clearScreen()
-Waiting2()
 Start()
 led.setBrightness(255)
 basic.forever(function () {
@@ -450,6 +462,7 @@ basic.forever(function () {
             } else if (mode == 6) {
             	
             }
+            Speed_Control()
         } else if (input.isGesture(Gesture.TiltRight)) {
             radio.sendNumber(6)
             mode = mode + 1
@@ -537,12 +550,5 @@ basic.forever(function () {
             control.waitMicros(100)
             modes()
         }
-    }
-})
-basic.forever(function () {
-    if (Speed > 100) {
-        Speed = 30
-    } else if (Speed < 30) {
-        Speed = 100
     }
 })
