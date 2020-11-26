@@ -212,115 +212,229 @@ input.onButtonPressed(Button.AB, function () {
 function modes () {
     basic.clearScreen()
     control.waitMicros(100)
-    if (mode == 1) {
-        if (Mode_1 == 1) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
-                turtle.forward(2)
-                turtle.turnLeft()
-                turtle.forward(2)
-                turtle.turnRight()
-                basic.clearScreen()
+    if (User_Key == Hand) {
+        if (mode == 1) {
+            if (Mode_1 == 1) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(2)
+                    turtle.turnLeft()
+                    turtle.forward(2)
+                    turtle.turnRight()
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 2) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(4)
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_1 == 4) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(2)
+                    turtle.turnRight()
+                    turtle.forward(2)
+                    turtle.turnLeft()
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 5) {
+            	
+            } else if (Mode_1 == 6) {
+            	
             }
-        } else if (Mode_1 == 2) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
-                turtle.forward(4)
-                basic.clearScreen()
+        } else if (mode == 2) {
+            if (Mode_2 == 1) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(2)
+                    turtle.turnRight()
+                    turtle.back(2)
+                    turtle.turnLeft()
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 2) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(4)
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_2 == 4) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(2)
+                    turtle.turnLeft()
+                    turtle.back(2)
+                    turtle.turnRight()
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 5) {
+            	
+            } else if (Mode_2 == 6) {
+            	
             }
-        } else if (Mode_1 == 3) {
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . . . .
-                `)
-        } else if (Mode_1 == 4) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 4)
-                turtle.forward(2)
-                turtle.turnRight()
-                turtle.forward(2)
-                turtle.turnLeft()
-                basic.clearScreen()
+        } else if (mode == 3) {
+            if (Mode_3 == 1) {
+            	
+            } else if (Mode_3 == 2) {
+            	
+            } else if (Mode_3 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_3 == 4) {
+            	
+            } else if (Mode_3 == 5) {
+            	
+            } else if (Mode_3 == 6) {
+            	
             }
-        } else if (Mode_1 == 5) {
-        	
-        } else if (Mode_1 == 6) {
-        	
+        } else if (mode == 4) {
+            if (Mode_4 == 1) {
+                mode = 1
+            } else if (Mode_4 == 2) {
+                mode = 2
+            } else if (Mode_4 == 3) {
+                mode = 3
+            } else if (Mode_4 == 4) {
+                mode = 4
+            } else if (Mode_4 == 5) {
+                mode = 5
+            } else if (Mode_4 == 6) {
+                mode = 6
+            }
         }
-    } else if (mode == 2) {
-        if (Mode_2 == 1) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 0)
-                turtle.back(2)
-                turtle.turnRight()
-                turtle.back(2)
-                turtle.turnLeft()
-                basic.clearScreen()
+    } else if (User_Key == Key) {
+        if (mode == 1) {
+            if (Mode_1 == 1) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(2)
+                    turtle.turnLeft()
+                    turtle.forward(2)
+                    turtle.turnRight()
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 2) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(4)
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_1 == 4) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 4)
+                    turtle.forward(2)
+                    turtle.turnRight()
+                    turtle.forward(2)
+                    turtle.turnLeft()
+                    basic.clearScreen()
+                }
+            } else if (Mode_1 == 5) {
+            	
+            } else if (Mode_1 == 6) {
+            	
             }
-        } else if (Mode_2 == 2) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 0)
-                turtle.back(4)
-                basic.clearScreen()
+        } else if (mode == 2) {
+            if (Mode_2 == 1) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(2)
+                    turtle.turnRight()
+                    turtle.back(2)
+                    turtle.turnLeft()
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 2) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(4)
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_2 == 4) {
+                for (let index = 0; index < 2; index++) {
+                    turtle.setPosition(2, 0)
+                    turtle.back(2)
+                    turtle.turnLeft()
+                    turtle.back(2)
+                    turtle.turnRight()
+                    basic.clearScreen()
+                }
+            } else if (Mode_2 == 5) {
+            	
+            } else if (Mode_2 == 6) {
+            	
             }
-        } else if (Mode_2 == 3) {
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . . . .
-                `)
-        } else if (Mode_2 == 4) {
-            for (let index = 0; index < 2; index++) {
-                turtle.setPosition(2, 0)
-                turtle.back(2)
-                turtle.turnLeft()
-                turtle.back(2)
-                turtle.turnRight()
-                basic.clearScreen()
+        } else if (mode == 3) {
+            if (Mode_3 == 1) {
+            	
+            } else if (Mode_3 == 2) {
+            	
+            } else if (Mode_3 == 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
+            } else if (Mode_3 == 4) {
+            	
+            } else if (Mode_3 == 5) {
+            	
+            } else if (Mode_3 == 6) {
+            	
             }
-        } else if (Mode_2 == 5) {
-        	
-        } else if (Mode_2 == 6) {
-        	
-        }
-    } else if (mode == 3) {
-        if (Mode_3 == 1) {
-        	
-        } else if (Mode_3 == 2) {
-        	
-        } else if (Mode_3 == 3) {
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . . . .
-                `)
-        } else if (Mode_3 == 4) {
-        	
-        } else if (Mode_3 == 5) {
-        	
-        } else if (Mode_3 == 6) {
-        	
-        }
-    } else if (mode == 4) {
-        if (Mode_4 == 1) {
-            mode = 1
-        } else if (Mode_4 == 2) {
-            mode = 2
-        } else if (Mode_4 == 3) {
-            mode = 3
-        } else if (Mode_4 == 4) {
-            mode = 4
-        } else if (Mode_4 == 5) {
-            mode = 5
-        } else if (Mode_4 == 6) {
-            mode = 6
+        } else if (mode == 4) {
+            if (Mode_4 == 1) {
+                mode = 1
+            } else if (Mode_4 == 2) {
+                mode = 2
+            } else if (Mode_4 == 3) {
+                mode = 3
+            } else if (Mode_4 == 4) {
+                mode = 4
+            } else if (Mode_4 == 5) {
+                mode = 5
+            } else if (Mode_4 == 6) {
+                mode = 6
+            }
         }
     }
     control.waitMicros(100)
