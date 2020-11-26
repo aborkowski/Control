@@ -98,33 +98,27 @@ function Waiting2 () {
         if (Temp == "") {
             basic.pause(500)
             if (Temp == "") {
+                led.toggle(1, 4)
                 if (Temp == "") {
-                    led.toggle(1, 4)
+                    basic.pause(500)
                     if (Temp == "") {
-                        basic.pause(500)
+                        led.toggle(2, 4)
                         if (Temp == "") {
+                            basic.pause(500)
                             if (Temp == "") {
-                                led.toggle(2, 4)
+                                led.toggle(3, 4)
                                 if (Temp == "") {
                                     basic.pause(500)
                                     if (Temp == "") {
+                                        led.toggle(4, 4)
                                         if (Temp == "") {
-                                            led.toggle(3, 4)
+                                            basic.pause(500)
                                             if (Temp == "") {
-                                                basic.pause(500)
+                                                basic.clearScreen()
                                                 if (Temp == "") {
-                                                    led.toggle(4, 4)
+                                                    basic.pause(500)
                                                     if (Temp == "") {
-                                                        basic.pause(500)
-                                                        if (Temp == "") {
-                                                            basic.clearScreen()
-                                                            if (Temp == "") {
-                                                                basic.pause(500)
-                                                                if (Temp == "") {
-                                                                    Waiting2()
-                                                                }
-                                                            }
-                                                        }
+                                                        Waiting2()
                                                     }
                                                 }
                                             }
@@ -324,40 +318,18 @@ function modes () {
                 mode = 6
             }
         }
+        control.waitMicros(100)
+        basic.showNumber(mode)
     } else if (User_Key == Key) {
         if (mode == 1) {
             if (Mode_1 == 1) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 4)
-                    turtle.forward(2)
-                    turtle.turnLeft()
-                    turtle.forward(2)
-                    turtle.turnRight()
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_1 == 2) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 4)
-                    turtle.forward(4)
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_1 == 3) {
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    # # # # #
-                    . . . . .
-                    . . . . .
-                    `)
+            	
             } else if (Mode_1 == 4) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 4)
-                    turtle.forward(2)
-                    turtle.turnRight()
-                    turtle.forward(2)
-                    turtle.turnLeft()
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_1 == 5) {
             	
             } else if (Mode_1 == 6) {
@@ -365,37 +337,13 @@ function modes () {
             }
         } else if (mode == 2) {
             if (Mode_2 == 1) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 0)
-                    turtle.back(2)
-                    turtle.turnRight()
-                    turtle.back(2)
-                    turtle.turnLeft()
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_2 == 2) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 0)
-                    turtle.back(4)
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_2 == 3) {
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    # # # # #
-                    . . . . .
-                    . . . . .
-                    `)
+            	
             } else if (Mode_2 == 4) {
-                for (let index = 0; index < 2; index++) {
-                    turtle.setPosition(2, 0)
-                    turtle.back(2)
-                    turtle.turnLeft()
-                    turtle.back(2)
-                    turtle.turnRight()
-                    basic.clearScreen()
-                }
+            	
             } else if (Mode_2 == 5) {
             	
             } else if (Mode_2 == 6) {
@@ -407,13 +355,7 @@ function modes () {
             } else if (Mode_3 == 2) {
             	
             } else if (Mode_3 == 3) {
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    # # # # #
-                    . . . . .
-                    . . . . .
-                    `)
+            	
             } else if (Mode_3 == 4) {
             	
             } else if (Mode_3 == 5) {
@@ -437,8 +379,6 @@ function modes () {
             }
         }
     }
-    control.waitMicros(100)
-    basic.showNumber(mode)
 }
 input.onButtonPressed(Button.B, function () {
     if (Lock == 0) {
